@@ -19,11 +19,23 @@
     div {
         margin-bottom: 16px;
     }
+    ul {
+        list-style-type: none;
+    }
 </style>
 <h1>Scan from WebCam:</h1>
 <div>
-    <b>Device has camera: </b>
-    <span id="cam-has-camera"></span>
+    <ul>
+        <li>
+            <b>Device has camera: </b>
+            <span id="cam-has-camera"></span>
+        </li>
+        <li>
+            <b>Device has number of cameras: </b>
+            <span id="number-of-camera"></span>
+        </li>
+    </ul>
+    
     <br>
     <video muted playsinline id="qr-video"></video>
 </div>
@@ -48,9 +60,8 @@
 <span id="file-qr-result">None</span>
 
 <script type="module">
-    
-    import QrScanner from "../qr-scanner.min.js";
-    QrScanner.WORKER_PATH = '../qr-scanner-worker.min.js';
+    import QrScanner from "./qr-scanner.js";
+    QrScanner.WORKER_PATH = "./worker.js";
 
     const video = document.getElementById('qr-video');
     const camHasCamera = document.getElementById('cam-has-camera');
@@ -58,6 +69,7 @@
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
+    const numOfCamSelector = document.getElementById('number-of-camera');
 
     function setResult(label, result) {
         label.textContent = result;
@@ -70,7 +82,8 @@
     // ####### Web Cam Scanning #######
 
     QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
-    
+    QrScanner.hasCamercaCount().then(numOfCamera => numOfCamSelector.textContent = numOfCamera);
+
     const scanner = new QrScanner(video, result => setResult(camQrResult, result));
     scanner.start();
 
