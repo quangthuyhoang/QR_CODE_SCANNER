@@ -98,7 +98,7 @@
         camHasCamera.textContent = hasCamera.hasCamera;
         numOfCamSelector.textContent = hasCamera.data.camCount;
         cameraListSelector.textContent = hasCamera.data.camList;
-        hasCamera.data.camList.forEach( (cam, i) => {
+        hasCamera.data.camList.forEach( (camera, i) => {
             let selected = i === 0;
             cameraListDrop.options.add( new Option(camera, camera, selected))
         });
