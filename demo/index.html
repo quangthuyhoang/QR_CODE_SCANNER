@@ -100,7 +100,7 @@
         cameraListSelector.textContent = hasCamera.data.camList;
         hasCamera.data.camList.forEach( (cam, i) => {
             let selected = i === 0;
-            cameraListDrop.options.add( new Options(camera, camera, selected))
+            cameraListDrop.options.add( new Option(camera, camera, selected))
         });
     });
     // QrScanner.hasCameraCount().then(numOfCamera => numOfCamSelector.textContent = numOfCamera);
