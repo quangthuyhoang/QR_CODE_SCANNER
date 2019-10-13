@@ -8,21 +8,22 @@ export default class QrScanner {
         return navigator.mediaDevices.enumerateDevices()
             .then(devices => {
                 cameras.hasCamera = devices.some(device => device.kind === 'videoinput');
+                cameras.cameraCount = this.cameraCount(devices);
                 return cameras;
             })
             .catch(() => false);
     }
 
-    // static cameraCount(devices) {
-    //     let camCount = 0;
-    //     let _devices = devices;
-    //     _devices.forEach(device => {
-    //         if(device.kind === 'videoinput'){
-    //             camCount++
-    //         }
-    //     })
-    //     return camCount;
-    // }
+    static cameraCount(devices) {
+        let camCount = 0;
+        let _devices = devices;
+        _devices.forEach(device => {
+            if(device.kind === 'videoinput'){
+                camCount++
+            }
+        })
+        return camCount;
+    }
     
     static hasCameraCount() {
         let camCount = 0;

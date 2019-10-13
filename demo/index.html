@@ -83,8 +83,9 @@
 
     QrScanner.hasCamera().then(hasCamera => {
         camHasCamera.textContent = hasCamera.hasCamera;
+        numOfCamSelector.textContent = hasCamera.cameraCount;
     });
-    QrScanner.hasCameraCount().then(numOfCamera => numOfCamSelector.textContent = numOfCamera);
+    // QrScanner.hasCameraCount().then(numOfCamera => numOfCamSelector.textContent = numOfCamera);
     
 
     const scanner = new QrScanner(video, result => setResult(camQrResult, result));
