@@ -9,6 +9,21 @@ export default class QrScanner {
             .catch(() => false);
     }
 
+    static hasCameraCount() {
+        let camCount = 0;
+        return navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                    devices.forEach(device => {
+                        if(device.kind === 'videoinput'){
+                            camCount++
+                        }
+                    })
+                    return camCount;
+                }
+            )
+            .catch(() => 0);
+    }
+
     constructor(video, onDecode, canvasSize = QrScanner.DEFAULT_CANVAS_SIZE) {
         this.$video = video;
         this.$canvas = document.createElement('canvas');
