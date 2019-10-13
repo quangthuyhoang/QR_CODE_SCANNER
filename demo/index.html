@@ -34,6 +34,10 @@
             <b>Device has number of cameras: </b>
             <span id="number-of-camera"></span>
         </li>
+        <li>
+            <b>Camera List: </b>
+            <span id="camera-list"></span>
+        </li>
     </ul>
     
     <br>
@@ -70,6 +74,7 @@
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
     const numOfCamSelector = document.getElementById('number-of-camera');
+    const cameraListSelector = document.getElementById('camera-list');
 
     function setResult(label, result) {
         label.textContent = result;
@@ -83,7 +88,8 @@
 
     QrScanner.hasCamera().then(hasCamera => {
         camHasCamera.textContent = hasCamera.hasCamera;
-        numOfCamSelector.textContent = hasCamera.cameraCount;
+        numOfCamSelector.textContent = hasCamera.data.camCount;
+        cameraListSelector.textContent = hasCamera.data.camList;
     });
     // QrScanner.hasCameraCount().then(numOfCamera => numOfCamSelector.textContent = numOfCamera);
     
