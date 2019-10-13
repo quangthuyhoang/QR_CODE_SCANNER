@@ -4,11 +4,26 @@ export default class QrScanner {
         // note that enumerateDevices can always be called and does not prompt the user for permission. However, device
         // labels are only readable if served via https and an active media stream exists or permanent permission is
         // given. That doesn't matter for us though as we don't require labels.
+        let cameras = {};
         return navigator.mediaDevices.enumerateDevices()
-            .then(devices => devices.some(device => device.kind === 'videoinput'))
+            .then(devices => {
+                cameras.hasCamera = devices.some(device => device.kind === 'videoinput');
+                return cameras;
+            })
             .catch(() => false);
     }
 
+    // static cameraCount(devices) {
+    //     let camCount = 0;
+    //     let _devices = devices;
+    //     _devices.forEach(device => {
+    //         if(device.kind === 'videoinput'){
+    //             camCount++
+    //         }
+    //     })
+    //     return camCount;
+    // }
+    
     static hasCameraCount() {
         let camCount = 0;
         return navigator.mediaDevices.enumerateDevices()
