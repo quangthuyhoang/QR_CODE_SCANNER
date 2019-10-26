@@ -100,6 +100,7 @@ export default class QrScanner {
         clearTimeout(this._offTimeout);
         this._offTimeout = null;
         if (this.$video.srcObject) {
+            console.log("source video". $video);
             // camera stream already/still set
             this.$video.play();
             return Promise.resolve();
