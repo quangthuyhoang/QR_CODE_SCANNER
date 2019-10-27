@@ -138,7 +138,8 @@ const getCameraSelection = async () => {
 
      cameraOptions.addEventListener('change', event => {
       let deviceId = event.target.value;
-      setCamera(deviceId, constraints);
+      console.log("deviceid", event.target)
+      setCamera(deviceId);
       
   })
 

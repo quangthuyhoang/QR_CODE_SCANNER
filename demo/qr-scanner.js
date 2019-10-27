@@ -147,6 +147,7 @@ export default class QrScanner {
     }
 
     setCamera(deviceId){
+        
         this._getMatchingCameraStream({
             video: {
                 deviceId: deviceId
