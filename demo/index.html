@@ -92,7 +92,7 @@
 <b>Detected QR code: </b>
 <span id="file-qr-result">None</span>
 
-<script src="./camera.js"></script>
+<!-- <script src="./camera.js"></script> -->
 
 <script type="module">
     import QrScanner from "./qr-scanner.js";
@@ -150,11 +150,11 @@
     });
 
     // Switch Camera
-    cameraListDrop.addEventListener('change', event => {
-      let deviceId = event.target.value;
-      console.log(event.target)
-      setCamera(deviceId, constraints);
-
+    // cameraListDrop.addEventListener('change', event => {
+    //   let deviceId = event.target.value;
+    //   console.log(event.target)
+    //   setCamera(deviceId, constraints);
+    // }
 </script>
 </body>
 </html>
