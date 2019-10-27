@@ -25,15 +25,16 @@ const uppdatedConstrants = front ? constraints :
 }
 
 if (navigator.mediaDevices.getUserMedia) {
-    console.log(navigator.mediaDevices)
+    // console.log(navigator.mediaDevices)
     navigator.mediaDevices.enumerateDevices()
-    .then(e => {
-      e.forEach(device => {
-        if(device.kind = "videoinput") {
+    .then(devices => {
+      devices.forEach(device => {
+        if(device.kind == "videoinput") {
           console.log(device)
         }
       }) 
     })
+    .catch(err => console.log(err))
     // console.log()
   navigator.mediaDevices.getUserMedia(uppdatedConstrants)
     .then(function (stream) {
