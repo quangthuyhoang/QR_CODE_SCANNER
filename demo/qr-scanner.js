@@ -110,7 +110,7 @@ export default class QrScanner {
         return this._getCameraStream('environment', true)
             .catch(() => {
                 // we (probably) don't have an environment camera
-                facingMode = 'user';
+                facingMode = 'environment';
                 return this._getCameraStream(); // throws if camera is not accessible (e.g. due to not https)
             })
             .then(stream => {
