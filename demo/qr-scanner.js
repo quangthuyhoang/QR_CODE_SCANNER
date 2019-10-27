@@ -146,6 +146,14 @@ export default class QrScanner {
         }, 300);
     }
 
+    setCamera(deviceId){
+        this._getMatchingCameraStream({
+            video: {
+                deviceId: deviceId
+            }
+        })
+    }
+
     /* async */
     static scanImage(imageOrFileOrUrl, sourceRect=null, worker=null, canvas=null, fixedCanvasSize=false,
                      alsoTryWithoutSourceRect=false) {

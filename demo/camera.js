@@ -1,6 +1,5 @@
 const videoToo = document.querySelector("#videoElement");
-const cameraOptions = document.querySelector('#camera-select-selection');
-
+const cameraOptions = document.querySelector('#camera-selecion');
 const constraints = { video: true };
 const development = true;
 var front = false;
@@ -119,7 +118,29 @@ const getCameraSelection = async () => {
 
   getCameraSelection();
 
+  function setCamera (deviceId, constraints) {
+    newConstraints = {
+      ...constraints,
+      video : {
+        deviceId: deviceId,
+      }
+    }
+    navigator.mediaDevices.getUserMedia(newConstraints)
+    .then(function (stream) {
+      videoToo.srcObject = stream;
+    })
+    .catch(function (error) {
+      console.log("Something went wrong with setcamera!");
+    });
+  }
+
      // ######## switch camera ########
+
+     cameraOptions.addEventListener('change', event => {
+      let deviceId = event.target.value;
+      setCamera(deviceId, constraints);
+      
+  })
 
 
   
