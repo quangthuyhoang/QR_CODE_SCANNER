@@ -236,7 +236,7 @@ export default class QrScanner {
         });
     }
 
-    _getCameraStream(facingMode, exact = false) {
+    _getCameraStream(facingMode, exact = true) {
         const constraintsToTry = [{
             width: { min: 1024 }
         }, {
